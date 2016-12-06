@@ -22,6 +22,7 @@ function roots_scripts() {
   if (WP_ENV === 'development') {
     $assets = array(
       'css'       => '/assets/css/main.css',
+	  'fontawesome' => '/assets/css/font-awesome.min.css',
       'js'        => '/assets/js/scripts.js',
       'modernizr' => '/assets/vendor/modernizr/modernizr.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
@@ -31,14 +32,15 @@ function roots_scripts() {
     $assets     = json_decode($get_assets, true);
     $assets     = array(
       'css'       => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
+	  'fontawesome' => '/assets/css/font-awesome.min.css',
       'js'        => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
     );
   }
-  wp_enqueue_style('google_fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600', false, '9880649384aea9f1ee166331c0a30daa');
+  wp_enqueue_style('google_fonts', 'https://fonts.googleapis.com/css?family=Oswald:300,400,700', false, '9880649384aea9f1ee166331c0a30daa');
   wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
-
+  wp_enqueue_style('fontawesome_css', get_template_directory_uri() . $assets['fontawesome'], false, null);
   /**
    * jQuery is loaded using the same method from HTML5 Boilerplate:
    * Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline

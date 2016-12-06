@@ -29,6 +29,46 @@ var Roots = {
   home: {
     init: function() {
       // JavaScript to be fired on the home page
+	  
+		$('.banner_content').slick({	  
+			/*centerMode: true,
+			variableWidth: true,*/
+			slidesToShow: 1,
+			slidesToScroll:1,
+			autoplay: true,
+			autoplaySpeed: 8000,
+			speed: 1000,
+			fade: true,
+			dots: false,
+			arrows: true
+		});
+		
+		$(document).ready(function(e) {
+						 
+			if($(window).width() >= 992){
+				var win_height = $( window ).height();
+				$('.banner_container').css('height', win_height-$('.main-menu').outerHeight());
+			}else{
+				$('.banner_container').css('height', '450');	
+			}
+			  
+			var parallax_controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
+				
+				// Home Slider
+			new ScrollMagic.Scene({triggerElement: ".banner_content"})
+				.setTween(".banner_content .banner_item", {y: "100%", ease: Linear.easeNone})
+				.addTo(parallax_controller);
+			
+			
+			$(window).resize(function() {
+				if($(window).width() >= 992){
+					var height = $( window ).height();
+					$('.banner_container').css('height', height-$('.main-menu').outerHeight());
+				}else{
+					$('.banner_container').css('height', '450');	
+				}
+			});
+		});
     }
   },
   // About us page, note the change from about-us to about_us.

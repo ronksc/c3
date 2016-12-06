@@ -1,1 +1,192 @@
-.banner { }
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
+
+.navbar{
+	margin-bottom:0;
+}
+
+.navbar-default{
+	//position:relative;
+	background:#000;
+	border-bottom:0;
+	
+	/*&:after{
+		content:"";
+		width:50%;
+		height:75px;
+		position:absolute;
+		left:50%;
+		top:0;
+		background:#370764;
+	}*/
+	
+	.function-header{
+		display:none;	
+	}
+	
+	.nav-container{
+		background:#370764;
+	}
+	
+	.navbar-toggle{
+		border:0;
+		
+		&:hover, &:focus{
+			background:none;
+		}
+		
+		.icon-bar{
+			height: 4px;
+		    width: 32px;
+			background-color:#fff;
+			border-radius:0;
+		}
+	}
+}
+
+.navbar-header{
+	position:relative;
+	text-align:center;
+}
+
+.navbar-toggle{
+	position:absolute;
+	top:50%;
+	right:15px;
+	transform:translateY(-50%);
+	margin:0;
+}
+
+.navbar-brand{
+	height: auto;
+    max-width: 190px;
+    padding: 10px 0;
+	//margin:0;
+	margin-left:0;
+	float:none;
+	display:inline-block;
+}
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+	
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {
+
+	.navbar-brand{
+		margin:0;
+		float:left;
+		margin-left:15px;
+		max-width:165px;
+	}
+	
+	.navbar-default{
+		.navbar-nav{
+			float:none;
+			text-align:center;
+			& > li{
+				float:none;
+				display:inline-block;
+				& > a{
+					color:#fff;
+					font-size:15px;
+					text-transform:uppercase;
+					letter-spacing:1px;
+					&:hover, &:focus{
+						color:#999;
+					}
+				}
+			}
+		}
+	
+		.function-header{
+			display:block;
+			float:right;
+			padding:10px 0;
+			margin-top:5px;
+			.function-nav{
+				display:inline-block;
+				.navbar-nav{
+					& > li{
+						float:none;
+						display:inline-block;
+						& > a{
+							font-size:13px;
+							letter-spacing:0;
+							padding:0;
+							margin-right:10px;
+						}
+					}
+				}
+			}
+			
+			.social-container{
+				display:inline-block;
+				a{
+					font-size:25px;
+					color:#fff;
+					display:inline-block;
+					margin-left:10px;
+					transform:all 0.5s ease-in-out;
+					
+					&:hover, &:focus{
+						.fa-facebook{
+							color:#3B5998;
+						}
+						
+						.fa-instagram{
+							color:#cd486b;
+						}
+						
+						.fa-twitter{
+							color:#4099FF;
+						}
+						
+						.fa-snapchat-ghost{
+							color:#fffc00;
+						}
+						
+						.fa-youtube{
+							color:#bb0000;
+						}
+					}
+					
+					
+				}
+			}
+		}
+	
+		
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+	
+}
+
+//===============================================================================
+//===============================================================================
+// Extra Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-xl-min) {
+	
+}

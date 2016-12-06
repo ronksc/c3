@@ -24,6 +24,34 @@ $roots_includes = array(
   'lib/post-types.php'       // Register Post Types
 );
 
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'function_menu' => __( 'Function Menu' ),
+	  'footer_navigation' => __( 'Footer Navigation' )
+    )
+  );
+}
+add_action( 'init', 'register_my_menus' );
+
+register_sidebar( array(
+	'name' => 'Function Menu',
+	'id' => 'function_menu',
+	'before_widget' => '',
+	'after_widget' => '',
+	'before_title' => false,
+	'after_title' => false
+) );
+
+register_sidebar( array(
+	'name' => 'Footer Navigation',
+	'id' => 'footer_navigation',
+	'before_widget' => '',
+	'after_widget' => '',
+	'before_title' => false,
+	'after_title' => false
+) );
+
 foreach ($roots_includes as $file) {
   if (!$filepath = locate_template($file)) {
     trigger_error(sprintf(__('Error locating %s for inclusion', 'roots'), $file), E_USER_ERROR);
