@@ -37,7 +37,7 @@
 <section class="home_content">
 	<div class="news_container">
     	<div class="container">
-	    	<div class="row">
+	    	<div class="">
             	<!-- isotope -->
                 <h2>NEWS</h2>
             </div>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="container">
-    	<div class="row">
+    	<div class="">
     		
             
             <div class="product_container">

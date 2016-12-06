@@ -35,7 +35,7 @@ var Roots = {
 			variableWidth: true,*/
 			slidesToShow: 1,
 			slidesToScroll:1,
-			autoplay: true,
+			autoplay: false,
 			autoplaySpeed: 8000,
 			speed: 1000,
 			fade: true,
