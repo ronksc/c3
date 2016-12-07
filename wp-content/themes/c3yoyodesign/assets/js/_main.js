@@ -42,8 +42,22 @@ var Roots = {
 			dots: false,
 			arrows: true
 		});
-		
+				
 		$(document).ready(function(e) {
+			var container = $('#news_container');
+	 
+			container.isotope({
+				itemSelector: '.news_item',
+				//layoutMode: 'moduloColumns',
+				masonry: {
+					columnWidth: container.find('.news_item').not('.item-width2').get(0),
+					gutter: 10
+				}
+			});
+			 
+			container.imagesLoaded().progress( function() {
+				container.isotope('layout');
+			});
 						 
 			if($(window).width() >= 992){
 				var win_height = $( window ).height();
