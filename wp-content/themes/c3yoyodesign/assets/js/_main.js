@@ -44,6 +44,10 @@ var Roots = {
 		});
 				
 		$(document).ready(function(e) {
+			if($('#feature_video').length > 0){
+				document.getElementById('feature_video').play(); 
+			}
+			
 			var container = $('#news_container');
 	 
 			container.isotope({

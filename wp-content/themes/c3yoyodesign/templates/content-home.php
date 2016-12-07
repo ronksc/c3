@@ -2,12 +2,13 @@
 	<div class="banner_container">
     	<div class="banner_content">
             <div class="banner_item" style="background-image:url(<?=get_stylesheet_directory_uri()?>/assets/img/img_banner_dummy.png);">
-                <!--<div style="position:absolute; height:100%; width:200%; left:-50%;">
-                    <video poster="<?=get_stylesheet_directory_uri()?>/assets/img/img_banner_dummy.png" class="lg-video-object lg-html5" preload="auto" autoplay="autoplay" muted="muted" loop>
-                        <source src="<?=get_stylesheet_directory_uri()?>/assets/img/big_buck_bunny.mp4" type="video/mp4">
+                <div style="position:absolute; height:100%; width:200%; left:-50%;">
+                    <video id="feature_video" poster="<?=get_stylesheet_directory_uri()?>/assets/img/img_banner_dummy.png" class="lg-video-object lg-html5" preload="auto" autoplay="autoplay" muted="muted" loop>
+                        <source src="<?=get_stylesheet_directory_uri()?>/assets/img/fingerspin.mp4" type="video/mp4">
                          Your browser does not support HTML5 video.
                     </video>
-                </div>-->
+                    <div class="video_mask"></div>
+                </div>
                 <div class="banner_text">
                 	<div class="clearfix">
                         <div class="banner_content_type">news</div>
@@ -18,7 +19,7 @@
                             <div class="text_content">
                                 <p>RAILGUN FIRST RELEASE ON YOYOREWIND<br />2016.01.01</p>
                                 <div class="more_link">
-                                    <a href="#">see more</a>
+                                    <a href="#" class="btn_more">see more</a>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +37,7 @@
                             <div class="text_content">
                                 <p>RAILGUN FIRST RELEASE ON YOYOREWIND<br />2016.01.01</p>
                                 <div class="more_link">
-                                    <a href="#">see more</a>
+                                    <a href="#" class="btn_more">see more</a>
                                 </div>
                             </div>
                         </div>
@@ -84,10 +85,10 @@
             	<!-- isotope -->
                 <div class="news_item item-width2">
                 	<div class="item_image">
-	                	<img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" />
+	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
                     </div>
                     <div class="item_content">
-                        <div class="item_title">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 1</div>
+                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 1</a></div>
                         <div class="item_detail">
                             <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
                         </div>
@@ -95,10 +96,10 @@
                 </div>
                 <div class="news_item">
                 	<div class="item_image">
-	                	<img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" />
+	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
                     </div>
                     <div class="item_content">
-                        <div class="item_title">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 2</div>
+                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 2</a></div>
                         <div class="item_detail">
                             <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
                         </div>
@@ -106,10 +107,10 @@
                 </div>
                 <div class="news_item">
                 	<div class="item_image">
-	                	<img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" />
+	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
                     </div>
                     <div class="item_content">
-                        <div class="item_title">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 3</div>
+                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 3</a></div>
                         <div class="item_detail">
                             <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
                         </div>
@@ -117,10 +118,10 @@
                 </div>
                 <div class="news_item">
                 	<div class="item_image">
-	                	<img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" />
+	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
                     </div>
                     <div class="item_content">
-                        <div class="item_title">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 4</div>
+                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 4</a></div>
                         <div class="item_detail">
                             <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
                         </div>
@@ -128,15 +129,18 @@
                 </div>
                 <div class="news_item">
                 	<div class="item_image">
-	                	<img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" />
+	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
                     </div>
                     <div class="item_content">
-                        <div class="item_title">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 5</div>
+                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 5</a></div>
                         <div class="item_detail">
                             <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="new_more">
+            	<a href="<?=get_permalink(6);?>" class="btn_more">More news</a>
             </div>
         </div>
     </div>
