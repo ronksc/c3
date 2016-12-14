@@ -144,46 +144,178 @@
             </div>
         </div>
     </div>
-
-    <div class="container">
-    	<div class="">
-    		
-            
-            <div class="product_container">
-            	<div class="section_title">PRODUCT</div>
-            
-            	<div class="feature_product">
-                	
-                </div>
-                
-                <div class="clearfix">
-                	<div class="col-sm-4 product_item">
-                    	<div class="product_image">
-                        	<div class="logo_overlay"></div>
-                        </div>
-                        <div class="product_name"></div>
-                    </div>
-                </div>
-                
-                <div class="more_link">
-                	<a href="#">...more c3 products</a>
-                </div>
+    
+    <div class="product_container">
+    	<div class="container">
+            <div class="section_title">
+            	<span>Latest Release</span>
             </div>
-            
-            <div class="team_container">
-            	<div class="clearfix">
-                	<div class="team_item">
-                    	<img src="" class="img-responsive" />
-                        <div class="team_name">
-                        	SHINYA<br />KIDO
-                        </div>
-                    </div>
-                </div>
-                
-            	<div class="more_link">
-                	<a href="#">- view all -</a>
-                </div>
+            <div class="home_product_container clearfix">
+				<?php
+				$args = array( 'numberposts' => 4, 'post_type' => 'c3_product', 'post_status' => 'publish', 'order' => 'DESC', 'orderby' => 'date', 'suppress_filters' => 0);
+				$results = get_posts( $args );
+				foreach( $results as $result ) : 
+					$term_list = wp_get_post_terms($result->ID, 'line-up', array("fields" => "names"));
+					$logo = get_field('logo', $result->ID);
+					//print_r($term_list);
+				?>
+					<div class="product_item col-sm-3">
+                    	<div class="product_content">
+                            <div class="product_image">
+                            	<figure>
+	                                <?php echo get_the_post_thumbnail($result->ID, 'full', array( 'class' => 'img-responsive' ) ); ?>
+                                </figure>
+                                <div class="logo_overlay">
+                                	<img src="<?=$logo['url']?>" class="img-responsive" />
+                                </div>
+                            </div>
+                            <div class="product_detail">
+                                <div class="product_name"><?=get_the_title($result->ID);?></div>
+                                <div class="product_series"><?=$term_list[0];?> Series</div>
+                            </div>
+                            <a href="<?=get_permalink($result->ID);?>" class="overlay_link"></a>
+                    	</div>
+					</div>
+				<?php endforeach; ?>
             </div>
+            <div class="more_link">
+                <a href="<?=get_permalink(77);?>" class="btn_more purple">All Yoyos</a>
+            </div>
+    	</div>
+    </div>
+    
+    <div class="team_container">
+    	<div class="container">
+        	<div class="section_title">
+                <span>Team</span>
+            </div>
+        </div>
+        <div class="team_content">
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    SHINYA<br />KIDO
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    ETHAN<br />WONG
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    SORA<br />ISHIKAWA
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG1
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG2
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG3
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG4
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG5
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG6
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG7
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
+                <div class="team_image">
+                    <figure>
+                        <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />
+                    </figure>
+                </div>
+                <div class="team_name">
+                    PETER<br />PONG8
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+        </div>
+        
+        <div class="more_link">
+            <a href="#" class="btn_more purple">view all</a>
         </div>
     </div>
 </section>

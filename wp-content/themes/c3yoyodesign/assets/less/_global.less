@@ -29,8 +29,10 @@ body{
 }
 
 a{
+	outline:none!important;
 	&:hover, &:focus{
 		text-decoration:none;
+		outline:none!important;
 	}
 }
 
@@ -86,6 +88,18 @@ a{
 			transform: translateX(0);
 			height: 100%;
 			border-color: #fff;
+		}
+	}
+	
+	&.purple{
+		color:#500b76;
+		&:hover{
+			&:before {
+				border-color:#500b76;
+			}
+			&:after {
+				border-color:#500b76;
+			}
 		}
 	}
 }

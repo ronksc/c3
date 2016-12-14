@@ -322,42 +322,267 @@
 	
 	.product_container{
 		.section_title{
-		
-		}
-		
-		.feature_product{
-		
-		}
-		
-		.product_item{
-			.product_image{
-				.logo_overlay{
-				
-				}
+			text-align:center;
+			transform:translateY(-50%);
+			margin-bottom:40px;
+			position:relative;
+			
+			&:before{
+				content:"";
+				position:absolute;
+				left:0;
+				top:50%;
+				width:50%;
+				height:2px;
+				background:#000;
 			}
 			
-			.product_name{
+			&:after{
+				content:"";
+				position:absolute;
+				right:0;
+				top:50%;
+				width:50%;
+				height:2px;
+				background:#000;
+			}
 			
+			span{
+				padding:5px 10%;
+				display:inline-block;
+				margin:0 auto;
+				background:#000;
+				color:#fff;
+				text-transform:uppercase;
+				font-size:25px;
+				letter-spacing:1px;
+				position:relative;
+				z-index:999;
+			}
+		}
+			
+		.product_item{
+			position:relative;
+			margin-bottom:15px;
+			
+			.product_content{
+				border:1px dashed #eee;
+				position:relative;
+				
+				.overlay_link{
+					position:absolute;
+					width:100%;
+					height:100%;
+					top:0;
+					left:0;
+				}
+				
+				&:hover{
+					.product_image{
+						figure img {
+							-webkit-transform: scale(1.1);
+							transform: scale(1.1);
+						}
+						.logo_overlay{
+							opacity:1;
+						}
+					}
+					
+					.product_detail{
+						background:#370764;
+						.product_name{
+							color:#fff;
+						}
+					}
+				}
+				
+				.product_image{
+					padding:10px;				
+					overflow:hidden;
+					position:relative;
+					
+					figure img {
+						-webkit-transform: scale(1);
+						transform: scale(1);
+						-webkit-transition: .3s ease-in-out;
+						transition: .3s ease-in-out;
+					}
+					.logo_overlay{
+						opacity:0;
+						position:absolute;
+						top:0;
+						left:0;
+						padding:10%;
+						width:100%;
+						height:100%;
+						background:rgba(55, 7, 100, 0.75);
+						-webkit-transition: .3s ease-in-out;
+						transition: .3s ease-in-out;
+						
+						&:before{
+							content:"";
+							position:absolute;
+							width:29px;
+							height:29px;
+							background:url(../img/home/bg_logo_overlay_left.png) no-repeat;
+							top:20px;
+							left:20px;
+						}
+						
+						&:after{
+							content:"";
+							position:absolute;
+							width:29px;
+							height:29px;
+							background:url(../img/home/bg_logo_overlay_right.png) no-repeat;
+							bottom:20px;
+							right:20px;
+						}
+					}
+				}
+				
+				.product_detail{
+					text-align:center;
+					border-top:1px dashed #eee;
+					padding: 10px 20px;
+					transition: .3s ease-in-out;
+					.product_name{
+						font-size: 20px;
+						transition: .3s ease-in-out;
+					}
+					.product_series{
+						font-size: 13px;
+						color:#999;
+						transition: .3s ease-in-out;
+					}
+				}
 			}
 		}
 		
 		.more_link{
+			padding:40px 0;
+			text-align:center;
 			a{
-				
+				padding:10px 40px;
+				font-size:25px;
+				text-transform: uppercase;
 			}
 		}
 	}
 	
 	.team_container{
-		.team_item{
-			.team_name{
-				
+		background:#000;
+		
+		
+		.section_title{
+			width:40%;
+			background:#000;
+			position:relative;
+			font-size:50px;
+			color:#fff;
+			text-transform:uppercase;
+			padding:0 10px;
+			transform:translateY(-25%);
+			
+			span{
+				position:relative;
+				z-index:999;
+			}
+			
+			&:before{
+				content:"";
+				position:absolute;
+				width:100%;
+				height:50%;
+				top:0;
+				left:0;
+				background:#500B76;
 			}
 		}
 		
-		.more_link{
-			a{
+		.team_content{
+			padding:40px 0 0 0;
+			
+			.slick-prev, .slick-next{
+				z-index:999;
+				width:40px;
+				height:40px;
+				&:before{
+					font-size:40px;
+					color:#fff;
+				}
+			}
+			
+			.slick-prev{
+				left:25px;
+			}
+			
+			.slick-next{
+				right:25px;
+			}
+			
+			.team_item{
+				padding:0;
+				position:relative;
 				
+				&:hover{
+					.team_image{
+						figure img {
+							-webkit-transform: scale(1.1);
+							transform: scale(1.1);
+						}
+					}
+				}
+				
+				.team_image{
+					overflow:hidden;
+					figure img {
+						-webkit-transform: scale(1);
+						transform: scale(1);
+						-webkit-transition: .3s ease-in-out;
+						transition: .3s ease-in-out;
+					}
+				}
+				
+				.team_name{
+					font-size:35px;
+					color:#fff;
+					letter-spacing:1px;
+					position:relative;
+					padding-top:10px;
+					line-height:110%;
+					transform:translateY(-55%);
+					margin-left:10px;
+					
+					&:before{
+						content:"";
+						position:absolute;
+						top:0;
+						left:0;
+						width:60px;
+						height:5px;
+						background:#fff;
+					}
+				}
+				
+				.overlay_link{
+					position:absolute;
+					width:100%;
+					height:100%;
+					top:0;
+					left:0;
+				}
+			}	
+		}
+		
+		.more_link{
+			padding:20px 0 40px;
+			text-align:center;
+			a{
+				padding:10px 40px;
+				font-size:25px;
+				text-transform: uppercase;
+				background:#999;
 			}
 		}
 	}
@@ -512,6 +737,12 @@
 						}
 					}
 				}
+			}
+		}
+		
+		.product_container{
+			.home_product_container{
+				margin:0 -15px;
 			}
 		}
 	}

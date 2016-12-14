@@ -27,7 +27,7 @@ function team_register() {
       'hierarchical' => true,
       'menu_position' => 20,
 	  'taxonomies' => array('country'),
-      'supports'      => array( 'title', 'editor', 'page-attributes'),
+      'supports'      => array( 'title', 'editor', 'page-attributes', 'thumbnail'),
   );
   register_post_type( 'team-member' , $args );
 }
@@ -78,7 +78,7 @@ function media_cover_register() {
       'capability_type' => 'post',
       'hierarchical' => true,
       'menu_position' => 20,
-      'supports'      => array( 'title', 'editor', 'page-attributes'),
+      'supports'      => array( 'title', 'editor', 'page-attributes', 'thumbnail'),
   );
   register_post_type( 'media-coverage' , $args );
 }
@@ -110,7 +110,7 @@ function c3_product_register() {
       'hierarchical' => true,
       'menu_position' => 20,
 	  'taxonomies' => array('line-up'),
-      'supports'      => array( 'title', 'editor', 'page-attributes'),
+      'supports'      => array( 'title', 'editor', 'page-attributes', 'thumbnail'),
   );
   register_post_type( 'c3_product' , $args );
 }

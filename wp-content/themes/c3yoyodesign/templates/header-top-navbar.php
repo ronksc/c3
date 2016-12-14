@@ -9,6 +9,10 @@
       </button>
       <a href="javascript:;" class="menu-label hidden-xs hidden-sm hidden-md hidden-lg" data-toggle="collapse" data-target=".navbar-collapse">menu</a>
       <a class="navbar-brand" href="<?php echo home_url(); ?>/"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/logo.png"></a>
+      <a class="mobile_cart" href="#">
+      	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      	<span>0</span>
+      </a>
     </div>
     <div class="function-header">
     	<div class="clearfix">
@@ -18,7 +22,6 @@
                     if (has_nav_menu('function_menu')) :
                       wp_nav_menu(array('theme_location' => 'function_menu', 'menu_class' => 'nav navbar-nav', 'depth' => 0));
                     endif;
-        
                 ?>
             </div>
             <div class="social-container">
@@ -27,6 +30,9 @@
                 <a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a>
                 <a href="#" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+            </div>
+            <div class="mini-cart">
+                <a href="#" style=""><i class="fa fa-shopping-cart" aria-hidden="true"></i>(0)</a>
             </div>
     	</div>
     </div>
@@ -38,8 +44,8 @@
             if (has_nav_menu('primary_navigation')) :
               wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav', 'depth' => 0));
             endif;
-
         ?>
+        
     </nav>
   </div>
 </header>
