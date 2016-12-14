@@ -50,13 +50,13 @@ var Roots = {
 			autoplay: true,
 			autoplaySpeed: 4000,
 			infinite: true,
-			speed: 1000,
+			speed: 400,
 			dots: false,
 			arrows: true,
 			draggable: false,
 			responsive: [
 				{
-				  breakpoint: 1024,
+				  breakpoint: 1440,
 				  settings: {
 					slidesToShow: 3,
 					slidesToScroll: 3,
