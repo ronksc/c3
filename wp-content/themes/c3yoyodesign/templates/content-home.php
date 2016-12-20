@@ -81,60 +81,72 @@
                     </div>
                 </div>
             </div>
-	    	<div class="news_grid" id="news_container">
-            	<!-- isotope -->
-                <div class="news_item item-width2">
-                	<div class="item_image">
-	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
-                    </div>
-                    <div class="item_content">
-                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 1</a></div>
-                        <div class="item_detail">
-                            <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+            <div class="news_grid_wrapper">
+                <div class="news_grid" id="news_container">
+                    <!-- isotope -->
+                    <div class="news_item item-width2">
+                        <div class="item_image">
+                            <figure>
+                                <a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
+                            </figure>
+                        </div>
+                        <div class="item_content">
+                            <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 1</a></div>
+                            <div class="item_detail">
+                                <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="news_item">
-                	<div class="item_image">
-	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
-                    </div>
-                    <div class="item_content">
-                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 2</a></div>
-                        <div class="item_detail">
-                            <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                    <div class="news_item">
+                        <div class="item_image">
+                            <figure>
+                                <a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
+                            </figure>
+                        </div>
+                        <div class="item_content">
+                            <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 2</a></div>
+                            <div class="item_detail">
+                                <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="news_item">
-                	<div class="item_image">
-	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
-                    </div>
-                    <div class="item_content">
-                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 3</a></div>
-                        <div class="item_detail">
-                            <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                    <div class="news_item">
+                        <div class="item_image">
+                            <figure>
+                                <a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
+                            </figure>
+                        </div>
+                        <div class="item_content">
+                            <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 3</a></div>
+                            <div class="item_detail">
+                                <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="news_item">
-                	<div class="item_image">
-	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
-                    </div>
-                    <div class="item_content">
-                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 4</a></div>
-                        <div class="item_detail">
-                            <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                    <div class="news_item">
+                        <div class="item_image">
+                            <figure>
+                                <a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
+                            </figure>
+                        </div>
+                        <div class="item_content">
+                            <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 4</a></div>
+                            <div class="item_detail">
+                                <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="news_item">
-                	<div class="item_image">
-	                	<a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
-                    </div>
-                    <div class="item_content">
-                        <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 5</a></div>
-                        <div class="item_detail">
-                            <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                    <div class="news_item">
+                        <div class="item_image">
+                            <figure>
+                                <a href="#"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/img_post_dummy.jpg" /></a>
+                            </figure>
+                        </div>
+                        <div class="item_content">
+                            <div class="item_title"><a href="#">RAILGUN & IMAGINE BREAKER RAILGUN & IMAGINE BREAKER 5</a></div>
+                            <div class="item_detail">
+                                <span class="item_category">PRODUCT</span> / <span class="item_date">2016.01.11</span>
+                            </div>
                         </div>
                     </div>
                 </div>
