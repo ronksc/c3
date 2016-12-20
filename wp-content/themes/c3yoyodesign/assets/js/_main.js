@@ -35,11 +35,11 @@ var Roots = {
 			variableWidth: true,*/
 			slidesToShow: 1,
 			slidesToScroll:1,
-			autoplay: false,
-			autoplaySpeed: 8000,
+			autoplay: true,
+			autoplaySpeed: 10000,
 			speed: 1000,
 			fade: true,
-			dots: false,
+			dots: true,
 			arrows: true
 		});
 		
@@ -57,6 +57,14 @@ var Roots = {
 			responsive: [
 				{
 				  breakpoint: 1440,
+				  settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3,
+					draggable: false
+				  }
+				},
+				{
+				  breakpoint: 992,
 				  settings: {
 					slidesToShow: 3,
 					slidesToScroll: 3,
@@ -100,6 +108,14 @@ var Roots = {
 			}else{
 				$('.banner_container').css('height', '450');	
 			}
+			
+			$(window).scroll(function(){
+				if($(window).scrollTop() > 150){
+					$('.slick-dots').fadeOut();
+				}else{
+					$('.slick-dots').fadeIn();
+				}
+			});
 			  
 			var parallax_controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
 				

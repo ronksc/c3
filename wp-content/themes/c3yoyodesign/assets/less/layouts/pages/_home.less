@@ -52,6 +52,33 @@
 				}
 			}
 			
+			.slick-dots{
+				bottom:10%;
+				
+				li{
+					width:25px;
+					button{
+						&:before{
+							content:"";
+							background:#fff;
+							width:25px;
+							height:4px;
+							top: 50%;
+						    transform: translateY(-50%);
+						}
+					}	
+					
+					&.slick-active{
+						button{
+							&:before{
+								//color:#fff;
+								background:#fff;
+							}
+						}
+					}
+				}
+			}
+			
 			.banner_item{
 				background-position: center center;
 				background-repeat: no-repeat;
@@ -521,6 +548,14 @@
 				right:25px;
 			}
 			
+			.slick-slide{
+				opacity:0.2;
+			}
+			
+			.slick-active{
+				opacity:1!important;
+			}
+			
 			.team_item{
 				padding:0;
 				position:relative;
@@ -646,6 +681,10 @@
 					width:29px;
 					height:53px;
 					transform:translateY(-150%);
+				}
+				
+				.slick-dots{
+					bottom:15%;
 				}
 			
 				.banner_item{
