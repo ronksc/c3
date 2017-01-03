@@ -4,10 +4,10 @@ Plugin URI: http://multidots.com/
 Author: Multidots
 Author URI: http://multidots.com/
 Contributors: dots, jaydeep-rami
-Stable tag: 1.1
+Stable tag: 1.3
 Tags: ecommerce tracking, WooCommerce ecommerce, facebook ecommerce, facebook conversion, google conversion, ecommerce marketing, ecommerce WooCommerce
 Requires at least: 3.8
-Tested up to: 4.6
+Tested up to: 4.7
 Donate link: 
 Copyright: (c) 2014-2015 Multidots Solutions PVT LTD (info@multidots.com) 
 License: GPLv3 or later
@@ -96,14 +96,17 @@ It is compatible all WordPress version.
 It is compatible for all WooCommerce version
 
 == Screenshots ==
-
-11. Example of  WooCommerce Ecommerce Tracking for Google and Facebook settings.
+1. Quick Info.
+2. Getting Started.
+3. Ecommerce Tracking Settings.
 
 == Upgrade Notice ==
 
 Automatic updates should work great for you.  As always, though, we recommend backing up your site prior to making any updates just to be sure nothing goes wrong.
 
 == Changelog ==
+= 1.3 - 30-12-2016 = 
+* Check Wordpress and WooCommerce compatibility
 
 = 1.2 - 26-08-2016 = 
 * Check Wordpress and WooCommerce compatibility

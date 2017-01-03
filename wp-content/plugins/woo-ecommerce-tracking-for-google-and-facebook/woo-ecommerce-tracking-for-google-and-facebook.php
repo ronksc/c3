@@ -16,7 +16,7 @@
  * Plugin Name:       WooCommerce Enhanced Ecommerce Analytics Integration with Conversion Tracking
  * Plugin URI:        http://www.multidots.com/
  * Description:       WooCommerce Enhanced Ecommerce Analytics Integration with Conversion Tracking is tracking order using Ecommerce tracking and boost your Marketing.
- * Version:           1.1
+ * Version:           1.3
  * Author:            Multidots
  * Author URI:        http://www.multidots.com/
  * License:           GPL-2.0+

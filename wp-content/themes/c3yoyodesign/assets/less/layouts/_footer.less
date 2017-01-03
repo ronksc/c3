@@ -1,6 +1,12 @@
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
 .content-info {
 	color:#fff;
-	background:#370764;
+	//background:#370764;
+	background:#111;
 	//
 	
 	a{
@@ -11,20 +17,146 @@
 	}
 	
 	.footer_item_wrapper{
-		padding:30px 0;
+		//padding:30px 0;
+		padding-bottom:30px;
+		
+		.newsletter_social_container{
+			.headerText{
+				text-align:center;
+				color:#fff;
+				h4{
+					line-height:140%;
+					margin-top:0;
+					margin-bottom:20px;
+				}
+			}
+			
+			.newsletter_container{
+				padding:20px;
+				
+				
+				.newsletter{
+					display:table;
+					width:100%;
+					max-width:450px;
+					margin:0 auto;
+				
+					.tnp-field-email{
+						display:table-cell;
+						width:85%;
+						
+						label{
+							display:none;
+						}
+						
+						.tnp-email{
+							width:100%;
+							height:40px;
+							padding:0 10px;
+							border:none;
+							color:#000;
+						}
+					}
+					
+					.tnp-field-button{
+						display:table-cell;
+						width:15%;
+						.tnp-button{
+							border: medium none;
+							height: 40px;
+							width: 100%;
+							background:#370764;
+							position:relative;
+						}
+					}
+				}
+			}
+			
+			.social_container{
+				padding:0 0 20px 0;
+				a{
+					display:inline-block;
+					margin-right:10px;
+					font-size:30px;
+					text-align:center;
+					width:45px;
+					height:45px;
+					transition: all 0.2s ease-in;
+					
+					&:last-child{
+						margin-right:0;
+					}
+					
+					&:hover{
+						opacity:0.75;
+					}
+				
+					&.btn_facebook{
+						background:#3B5998;
+					}
+					
+					&.btn_instagram{
+						background:#cd486b;
+					}
+					
+					&.btn_twitter{
+						background:#4099ff;
+					}
+					
+					&.btn_snapchat{
+						background:#fffc00;
+					}
+					
+					&.btn_youtube{
+						background:#bb0000;
+					}
+				}
+			}
+		}
+		
 		.footer_item{
-			min-height:350px;
+			margin-bottom:20px;
 			.section_title{
 				font-size:20px;
 				color:#fff;
 				text-transform:uppercase;
 				letter-spacing:1px;
 			}
+			
+			ul{
+				padding-left:0;
+				li{
+					list-style:none;
+					padding-bottom:10px;
+					
+					a{
+						position:relative;
+						display:inline-block;
+						padding-left:10px;
+					
+						&:before{
+							background: #fff none repeat scroll 0 0;
+							content: "";
+							height: 1px;
+							left: 0;
+							line-height: 100%;
+							position: absolute;
+							top: 50%;
+							transform: translateY(-50%);
+							width: 5px;
+						}
+					
+						&:hover{
+							text-decoration:underline;
+						}
+					}
+				}
+			}
 		}
 	}
 	
 	.copyright_wrapper{
-		background:#000;
+		background:#370764;
 		padding:10px 0;
 		letter-spacing:1px;
 		text-transform:uppercase;
@@ -37,5 +169,70 @@
 	.tnc{
 		text-align:right;
 		font-size:12px;
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {
+	.content-info {
+		.footer_item_wrapper{
+			.newsletter_social_container{
+				border-bottom:1px solid rgba(255,255,255,0.1); 
+				margin-bottom:40px; 
+				display:table; 
+				width:100%;
+				
+				.newsletter_container{
+					padding:0;
+					border-right:1px solid rgba(255,255,255,0.1); 
+					display:table-cell; 
+					float:none; 
+					padding:40px 0; 
+					height:100%;
+					
+					.newsletter{
+						max-width:350px;
+					}
+				}
+				
+				.social_container{
+					display:table-cell; 
+					float:none; 
+					height:100%;
+				}
+			}
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+	.content-info {
+		.footer_item_wrapper{
+			.newsletter_social_container{				
+				.newsletter_container{					
+					.newsletter{
+						max-width:500px;
+					}
+				}
+			}
+		}
 	}
 }
