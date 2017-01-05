@@ -141,6 +141,28 @@ var Roots = {
     init: function() {
       // JavaScript to be fired on the about us page
     }
+  },
+  single_team_member: {
+	init: function() {
+		$('.team_slider').slick({
+			adaptiveHeight: true,
+			slidesToShow: 1,
+			slidesToScroll:1,
+			autoplay: true,
+			autoplaySpeed: 10000,
+			speed: 1000,
+			//fade: true,
+			dots: true,
+			arrows: true
+		});	
+		
+		$('.related_topic_slider').slick({
+			slidesToShow: 4,
+			slidesToScroll:4,
+			speed: 1000,
+			arrows: true
+		});
+	}
   }
 };
 

@@ -1,0 +1,348 @@
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
+.page-template-template-team-listing{
+	.team_container{
+		padding:20px 0 30px;
+		.region_container{
+			//padding-bottom:30px;
+			
+			&:last-child{
+				padding-bottom:0;
+			}
+			
+			h3{
+				margin:10px 0 40px;
+				display:block;
+				text-align:center;
+				position: relative;
+				text-transform: uppercase;
+				
+				&:after{
+					border-bottom: thin solid #000;
+					content: "";
+					display: block;
+					left: 0;
+					position: absolute;
+					top: 50%;
+					width: 100%;
+				}
+				
+				span{
+					display:inline-block;
+					padding:0 1em;
+					background:#fff;
+					position:relative;
+					z-index:2;
+				}
+			}
+			
+			.team_row{
+				//padding-bottom:25px;
+				
+				&:last-child{
+					padding-bottom:0;
+				}
+			}
+			
+			.team_item{
+				margin-bottom:30px;
+				&:hover{
+					.team_image{
+						background-size:auto 110%;
+						a{
+							background:rgba(255,255,255,0.1);
+						}
+					}
+					
+					.team_name{
+						&:after{
+							width:120px;
+						}
+					}
+				}
+			
+				.team_image{
+					background-repeat:no-repeat; 
+					background-position:center; 
+					background-size:auto 100%; 
+					width:100%; 
+					padding-bottom:100%;
+					position:relative;
+					transition: all 0.3s ease-in;
+					a{
+						position:absolute;
+						width:100%;
+						height:100%;
+						top:0;
+						left:0;
+						transition: all 0.3s ease-in;
+					}
+				}
+			
+				.team_name{
+					font-size:20px;
+					letter-spacing:1px;
+					text-align:center;
+					padding-bottom:15px;
+					margin-top:10px;
+					text-transform:uppercase;
+										
+					&:after{
+						content:"";
+						position:absolute;
+						bottom:0;
+						left:50%;
+						width:60px;
+						height:5px;
+						background:#000;
+						transform:translateX(-50%);
+						transition: all 0.3s ease-in;
+					}
+					
+					a{
+						color:#000;
+					}
+				}
+			}
+		}
+	}
+}
+
+.single-team-member{
+	.team_content_section{
+		padding-bottom:30px;
+		.team_slider{
+			margin:0 -15px;
+			.slick-dots{
+				//bottom:25px;
+			}
+			
+			.slick-prev, .slick-next{
+				background:rgba(255,255,255,0.7);
+				height: auto;
+				padding: 7px 0;
+				text-align: center;
+				width: 40px;
+				z-index: 999;				
+				&:before{
+					color:#000;
+					font-family:FontAwesome;
+					font-size:30px;
+				}
+			}
+			
+			.slick-prev{
+				left:0px;
+				&:before{
+					content:"\f053";
+				}
+			}
+			
+			.slick-next{
+				right:0px;
+				&:before{
+					content:"\f054";
+				}
+			}
+		}
+		.team_member_content{
+			.member_header{
+				margin:40px 0;
+				.member_name{
+					h2{
+						display:inline-block;
+						text-transform:uppercase;
+					}
+				}
+				.team_connect{
+					span{
+						display:inline-block;
+						font-size:15px;
+					}
+					ul{
+						padding:0;
+						display:inline-block;
+						margin:0;
+						li{
+							list-style:none;
+							display:inline-block;
+							margin-left:10px;
+							a{
+								color:#000;
+								display:inline-block;
+								font-size:30px;	
+							}
+						}
+					}
+				}
+			}
+			
+			.bio_content{
+				.bio_detail{
+					font-size: 15px; 
+					//font-weight: 300; 
+					letter-spacing:1px;
+				}
+				
+				h4{
+					margin:20px 0 10px;
+				}
+			}
+		}
+	}
+	
+	.related_topic{
+		background:#f8f8f8;
+		padding:20px 0 60px;
+		
+		.related_header{
+			h3{
+				margin:10px 0 40px;
+				display:block;
+				text-align:center;
+				position: relative;
+				text-transform: uppercase;
+				
+				&:after{
+					border-bottom: thin solid #000;
+					content: "";
+					display: block;
+					left: 0;
+					position: absolute;
+					top: 50%;
+					width: 100%;
+				}
+				
+				span{
+					display:inline-block;
+					padding:0 1em;
+					background:#f8f8f8;
+					position:relative;
+					z-index:2;
+				}
+			}
+		}
+		
+		.related_topic_slider{
+			.slick-prev, .slick-next{
+				background:rgba(255,255,255,0.7);
+				height: auto;
+				padding: 7px 0;
+				text-align: center;
+				width: 40px;
+				z-index: 999;
+				transform: translateY(-100%);
+				
+				&:before{
+					color:#000;
+					font-family:FontAwesome;
+					font-size:30px;
+				}
+			}
+			
+			.slick-prev{
+				left:10px;
+				&:before{
+					content:"\f053";
+				}
+			}
+			
+			.slick-next{
+				right:10px;
+				&:before{
+					content:"\f054";
+				}
+			}
+			
+			.related_topic_item{
+				text-align:center;
+				margin:10px;
+				.topic_feature_img{
+					margin-bottom:10px;
+				}
+				
+				.related_topic_title{
+					position:relative;
+					padding-bottom:15px;
+					margin-bottom:20px;
+					&:after{
+						content:"";
+						position:absolute;
+						bottom:0;
+						width:60px;
+						height:5px;
+						background:#000;
+						left:50%;
+						transform:translateX(-50%);
+					}
+				}
+			}
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+	
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {
+	.single-team-member{
+		.team_content_section{
+			.team_slider{
+				margin:0;
+			}
+			.team_member_content{
+				.member_header{
+					display:table;
+					width:100%;
+					.member_name{
+						display:table-cell;
+						vertical-align:middle;
+						h2{
+							display:inline-block;
+							margin:0;
+						}
+					}
+					.team_connect{
+						display:table-cell;
+						text-align:right;
+						vertical-align:middle;
+					}
+				}
+			}
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+	
+}
+
+//===============================================================================
+//===============================================================================
+// Extra Wide desktop
+//===============================================================================
+//===============================================================================
+
+
+@media (min-width: @screen-xl-min) {
+
+}

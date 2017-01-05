@@ -204,6 +204,15 @@
         </div>
         <div class="team_content">
             <div class="team_item">
+                <div class="team_image" style="background-image:url(<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png); background-size:100% auto; background-repeat:no-repeat; background-position:center; width:100%; padding-bottom:100%;">
+                    
+                </div>
+                <div class="team_name">
+                    SHINYA<br />KIDO
+                </div>
+                <a href="#" class="overlay_link"></a>
+            </div>
+            <div class="team_item">
                 <div class="team_image">
                     <figure>
                         <img src="<?=get_stylesheet_directory_uri()?>/assets/img/img_team_dummy.png" class="img-responsive" />

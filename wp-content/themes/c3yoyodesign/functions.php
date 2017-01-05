@@ -77,3 +77,19 @@ function my_acf_google_map_api( $api ){
 }
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+function change_page_menu_classes($menu)
+{
+    global $post;
+    if (get_post_type($post) == 'team-member')
+    {
+        $menu = str_replace( 'active', '', $menu ); // remove all current_page_parent classes
+        $menu = str_replace( 'menu-team-c3', 'menu-team-c3 active', $menu ); // add the current_page_parent class to the page you want
+    }else if (get_post_type($post) == 'c3_product')
+    {
+        $menu = str_replace( 'active', '', $menu ); // remove all current_page_parent classes
+        $menu = str_replace( 'menu-yoyos', 'menu-yoyos active', $menu ); // add the current_page_parent class to the page you want
+    }
+    return $menu;
+}
+add_filter( 'nav_menu_css_class', 'change_page_menu_classes', 10,2 );
