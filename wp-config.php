@@ -40,6 +40,19 @@ else if($_SERVER['SERVER_NAME'] == "www.c3yoyodesign.com"){
 	define( 'WP_SITEURL',  'http://www.c3yoyodesign.com' );
 	define( 'WP_HOME', 'http://www.c3yoyodesign.com' );
 }
+else if($_SERVER['SERVER_NAME'] == "c3staging.fp-production.com"){
+	/** The name of the database for WordPress */
+	define('DB_NAME', 'fpproducti_c3yoyodesign');
+
+	/** MySQL database username */
+	define('DB_USER', 'fpproducti_root');
+
+	/** MySQL database password */
+	define('DB_PASSWORD', 'P@ssw0rd');
+	define( 'WP_SITEURL',  'http://c3staging.fp-production.com' );
+	define( 'WP_HOME', 'http://c3staging.fp-production.com' );
+}
+
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

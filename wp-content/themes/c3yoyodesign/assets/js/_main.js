@@ -145,7 +145,7 @@ var Roots = {
   single_team_member: {
 	init: function() {
 		$('.team_slider').slick({
-			adaptiveHeight: true,
+			//adaptiveHeight: true,
 			slidesToShow: 1,
 			slidesToScroll:1,
 			autoplay: true,
@@ -160,8 +160,81 @@ var Roots = {
 			slidesToShow: 4,
 			slidesToScroll:4,
 			speed: 1000,
-			arrows: true
+			arrows: true,
+			responsive:[
+				{
+					breakpoint: 1440,
+					settings: {
+						slidesToShow: 4,
+						slidesToScroll: 4,
+					}
+				},
+				{
+					breakpoint: 1200,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 3,
+					}
+				},
+				{
+					breakpoint: 992,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2,
+					}
+				},
+				{
+					breakpoint: 650,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+					}
+				}
+			]
 		});
+		
+		function init_scroll_down(){
+			var target_buffer = parseInt($('.main').css('margin-top'));
+			console.log('target_buffer = '+target_buffer);
+			
+			$('.scroll_down a').unbind('click');
+			$('.scroll_down a').click(function(){
+				//console.log('click');	
+				$('html, body').animate({
+					//scrollTop: $('#first_banner').offset().top - target_buffer
+					scrollTop : $('#content_start').offset().top - target_buffer
+				}, 800);
+			});
+		}
+		
+		$(document).ready(function(e) {
+			init_scroll_down();
+			
+            if($(window).width() >= 992){
+				var win_height = $( window ).height();
+				$('.team_slider_container').css('height', win_height-$('.main-menu').outerHeight());
+			}else{
+				$('.team_slider_container').css('height', '450');	
+			}
+			
+			var parallax_controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
+				
+				// Home Slider
+			new ScrollMagic.Scene({triggerElement: ".team_slider"})
+				.setTween(".team_slider .slider_item", {y: "100%", ease: Linear.easeNone})
+				.addTo(parallax_controller);
+			
+			$(window).resize(function() {
+				init_scroll_down();
+				
+				if($(window).width() >= 992){
+					var height = $( window ).height();
+					$('.team_slider_container').css('height', height-$('.main-menu').outerHeight());
+				}else{
+					$('.team_slider_container').css('height', '400');
+				}
+			});
+        });
 	}
   }
 };

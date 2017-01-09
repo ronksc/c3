@@ -1,0 +1,192 @@
+//===============================================================================
+//===============================================================================
+// Base
+//===============================================================================
+//===============================================================================
+.page-template-template-news-php{
+	background:#f4f4f4;
+	
+	.new_listing_section{
+		.title_container{
+			width:100%;
+			padding:50px 0;
+			h1{
+				display:block;
+				text-align:center;
+				margin:0;
+				padding:0;
+				font-size: 55px;
+				line-height:1;
+				text-transform:uppercase;
+			}
+		}
+	}
+	
+	.post_container{
+		.articles{
+			margin: 0 auto;
+			max-width: 1800px;
+			overflow: hidden;
+			padding: 0 40px 40px;
+			position: relative;
+			width: 100%;
+			
+			.post_item{
+				&.article_feature{
+					margin-bottom: 40px;
+					margin-left: auto;
+					margin-right: auto;
+					max-height: 1080px;
+					position: relative;
+					width:100%;
+					
+					.img_container{
+						a{
+							position: relative;
+							vertical-align: top;
+							display:block;
+							
+							/*&:before {
+								border-bottom: 10px solid transparent;
+								border-right: 10px solid #ffffff;
+								border-top: 10px solid transparent;
+								content: "";
+								height: 0;
+								position: absolute;
+								right: 0;
+								top: 2.5em;
+								width: 0;
+								z-index:999;
+							}*/
+						}
+					}
+					
+					.post_content{
+						.post_content_wrapper{
+							padding:30px;
+							font-size:15px;
+							h2{
+								font-size:40px;
+							}
+						}
+					}
+				}
+			
+				.img_container{
+					padding:0;
+				}
+				
+				.post_content{
+					padding:0;
+					background:#fff;
+					.post_content_wrapper{
+						padding:20px;
+						h2{
+							margin-top:0;
+							font-size:25px;
+						}
+					}
+				}
+			}
+		}
+		
+		.featured_body{
+			.articles_listing{
+				margin:-15px;
+			}
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// tablet
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-sm-min) {
+	
+}
+
+//===============================================================================
+//===============================================================================
+// Desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-md-min) {
+	.page-template-template-news-php{
+		.post_container{
+			.articles{
+				.post_item{
+					&.article_feature{
+						display:table;
+						width:100%;
+						
+						.img_container{
+							display:table-cell;
+							float:none;
+							a{
+								position: relative;
+								vertical-align: top;
+								display:block;
+								
+								&:before {
+									border-bottom: 10px solid transparent;
+									border-right: 10px solid #ffffff;
+									border-top: 10px solid transparent;
+									content: "";
+									height: 0;
+									position: absolute;
+									right: 0;
+									top: 2.5em;
+									width: 0;
+									z-index:999;
+								}
+							}
+						}
+						
+						.post_content{
+							display:table-cell;
+							float:none;
+							height:100%;
+							vertical-align:top;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//===============================================================================
+//===============================================================================
+// Wide desktop
+//===============================================================================
+//===============================================================================
+@media (min-width: @screen-lg-min) {
+	.page-template-template-news-php{
+		
+		.new_listing_section{
+			.title_container{
+				h1{
+					
+				}
+			}
+		}
+		
+		.post_container{
+			.articles{
+				max-width: 2000px;
+			}
+		}
+	}	
+}
+
+//===============================================================================
+//===============================================================================
+// Extra Wide desktop
+//===============================================================================
+//===============================================================================
+
+@media (min-width: @screen-xl-min) {
+
+}
