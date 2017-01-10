@@ -142,6 +142,38 @@ var Roots = {
       // JavaScript to be fired on the about us page
     }
   },
+  page_template_template_news_php:{
+	init: function() {
+		$(document).ready(function(){
+			var container = $('#feature_article');
+	 
+	 		var isoOptions = {
+				itemSelector: '.post_item',
+				percentPosition: true,
+				masonry: {
+					columnWidth: '.grid-sizer',
+					gutter: '.grid-gutter'
+				}
+			};
+	 
+	 		if($(window).width() > 992){
+				container.isotope(isoOptions);
+				
+				container.imagesLoaded().progress( function() {
+					container.isotope('layout');
+				});	
+			}			
+			
+			$(window).resize(function(){
+				if($(window).width() < 992){
+					container.isotope('destroy');
+				}else{
+					container.isotope(isoOptions);	
+				}
+			});
+		});
+	}
+  },
   single_team_member: {
 	init: function() {
 		$('.team_slider').slick({
