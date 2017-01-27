@@ -142,6 +142,53 @@ var Roots = {
       // JavaScript to be fired on the about us page
     }
   },
+  page_template_template_c3x_fingerspin:{
+	init: function() {
+		function initExpandable(){
+			$('.expandable_toggle a').unbind('click');
+			$('.expandable_toggle a').click(function(){
+				if($(this).hasClass('open')){
+					$(this).removeClass('open');
+					$('.expandable_content_wrapper').animate({
+						height:0
+					}, 200);
+				}else{
+					$(this).addClass('open');
+					$('.expandable_content_wrapper').animate({
+						height: $('.expandable_content').height()+250
+					}, 200);
+				}
+			});
+		}
+		
+		$('.product_thumb').slick({	  
+			slidesToShow: 4,
+			slidesToScroll:1,
+			autoplay: false,
+			speed: 1000,
+			arrows: true
+		});
+		
+		$(document).ready(function(e) {
+            initExpandable();
+			
+			var container = $('#galler_container');
+	 
+			container.isotope({
+				itemSelector: '.gallery_item',
+				//layoutMode: 'moduloColumns',
+				masonry: {
+					columnWidth: container.find('.gallery_item').not('.item-width2').get(0),
+					gutter: 0
+				}
+			});
+			 
+			container.imagesLoaded().progress( function() {
+				container.isotope('layout');
+			});
+        });
+	}
+  },
   page_template_template_news_php:{
 	init: function() {
 		$(document).ready(function(){
