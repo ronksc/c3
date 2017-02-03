@@ -23,6 +23,17 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+	  $(document).ready(function() {
+		  /*$('select').niceSelect();
+		  
+		  if($('.reset_variations').length){
+			  $('.reset_variations').unbind('click');
+			  $('.reset_variations').click(function(){
+				  $('select').niceSelect('update'); 
+				  console.log('reset clicked'); 
+			  });
+		  }*/
+	  });
     }
   },
   // Home page

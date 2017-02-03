@@ -97,6 +97,31 @@ add_filter( 'nav_menu_css_class', 'change_page_menu_classes', 10,2 );
 add_filter('loop_shop_columns', 'loop_columns');
 if (!function_exists('loop_columns')) {
 	function loop_columns() {
-		return 5; // 3 products per row
+		return 4; // 3 products per row
 	}
 }
+
+function sv_remove_product_page_skus( $enabled ) {
+    if ( ! is_admin() && is_product() ) {
+        return false;
+    }
+
+    return $enabled;
+}
+add_filter( 'wc_product_sku_enabled', 'sv_remove_product_page_skus' );
+
+function patricks_currency_symbol( $currency_symbol, $currency ) {
+    switch( $currency ) {
+        case 'HKD':
+            $currency_symbol = 'HKD $';
+            break;
+        case 'RMB':
+            $currency_symbol = 'RMB $';
+            break;
+        case 'USD':
+            $currency_symbol = 'USD $';
+            break;
+    }
+    return $currency_symbol;
+}
+add_filter('woocommerce_currency_symbol', 'patricks_currency_symbol', 30, 2);
