@@ -94,12 +94,12 @@ function change_page_menu_classes($menu)
 }
 add_filter( 'nav_menu_css_class', 'change_page_menu_classes', 10,2 );
 
-add_filter('loop_shop_columns', 'loop_columns');
+/*add_filter('loop_shop_columns', 'loop_columns');
 if (!function_exists('loop_columns')) {
 	function loop_columns() {
 		return 4; // 3 products per row
 	}
-}
+}*/
 
 function sv_remove_product_page_skus( $enabled ) {
     if ( ! is_admin() && is_product() ) {
