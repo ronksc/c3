@@ -28,6 +28,7 @@ function register_my_menus() {
   register_nav_menus(
     array(
       'function_menu' => __( 'Function Menu' ),
+	  'product_filter_menu' => __( 'Product Filter' ),
 	  'footer_navigation' => __( 'Footer Navigation' )
     )
   );
@@ -41,6 +42,15 @@ register_sidebar( array(
 	'after_widget' => '',
 	'before_title' => false,
 	'after_title' => false
+) );
+
+register_sidebar( array(
+	'name' => 'Product Filter',
+	'id' => 'product_filter_menu',
+	'before_widget' => '<div id="product-filter-%1$s" class="widget %2$s">',
+	'after_widget' => '</div>',
+	'before_title' => '<h3 class="widgetTitle">',
+	'after_title' => '</h3>'
 ) );
 
 register_sidebar( array(

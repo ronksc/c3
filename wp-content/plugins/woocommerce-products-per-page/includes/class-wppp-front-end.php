@@ -86,7 +86,7 @@ class WPPP_Front_End {
 
 		do_action( 'wppp_before_dropdown_form' );
 
-		?><form method="<?php echo esc_attr( $method ); ?>" action="<?php echo esc_url( $action ); ?>" style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
+		?><form method="<?php echo esc_attr( $method ); ?>" action="<?php echo esc_url( $action ); ?>" class="form-wppp-select products-per-page"><?php
 
 			 do_action( 'wppp_before_dropdown' );
 

@@ -4,7 +4,7 @@
   Plugin Name: Newsletter
   Plugin URI: http://www.thenewsletterplugin.com/plugins/newsletter
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
-  Version: 4.7.7
+  Version: 4.7.8
   Author: Stefano Lissa & The Newsletter Team
   Author URI: http://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -14,7 +14,7 @@
  */
 
 // Used as dummy parameter on css and js links
-define('NEWSLETTER_VERSION', '4.7.7');
+define('NEWSLETTER_VERSION', '4.7.8');
 
 global $wpdb, $newsletter;
 
@@ -1530,7 +1530,16 @@ function tnpc_css_callback() {
 }
 
 if (is_admin()) {
+add_action('plugins_loaded', 'newsletter_plugin_loaded');
+}
 
+function newsletter_plugin_loaded() {
+
+    // Check the TGM version?
+//    if (class_exists('TGM_Plugin_Activation') && TGM_Plugin_Activation::TGMPA_VERSION != '2.6.1') {
+//        // Something
+//    }
+    
 // TGM PLUGIN ACTIVATION
 // see http://tgmpluginactivation.com/configuration/ for detailed documentation.
     require_once dirname(__FILE__) . '/includes/class-tgm-plugin-activation.php';
