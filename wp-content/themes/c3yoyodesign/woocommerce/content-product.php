@@ -43,7 +43,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
 	$img_url = $image = wp_get_attachment_image_src( get_post_thumbnail_id( $product->ID ), 'single-post-thumbnail' );
-	remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash',10);
+	//remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash',10);
 	echo '<div class="loop_product_thumbnail" style="background-image:url('.$image[0].')">';
 	do_action( 'woocommerce_before_shop_loop_item_title' );
 	echo '</div>';

@@ -53,11 +53,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 						?>
 						<?php if ( ! $_product->is_visible() ) : ?>
 							<?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ) . $product_name . '&nbsp;'; ?>
-						<?php else : ?>
-							<a class="haha" href="<?php echo esc_url( $product_permalink ); ?>">
+						<?php else : 
+							$img_url = $image = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'single-post-thumbnail' );
+						?>
+                        	<div class="widget-thumb" style="background-image: url(<?=$image[0]?>)"></div>
+							<a href="<?php echo esc_url( $product_permalink ); ?>">
 								<?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ) . $product_name . '&nbsp;'; ?>
 							</a>
-						<?php endif; ?>
+						<?php 
+							unset($image);
+						endif; ?>
 						<?php echo WC()->cart->get_item_data( $cart_item ); ?>
 
 						<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>

@@ -153,6 +153,28 @@ var Roots = {
       // JavaScript to be fired on the about us page
     }
   },
+  woocommerce: {
+    init: function() {
+      // JavaScript to be fired on the about us page
+	  function initSidebarToggle(){
+		  if($('#toggle_sidebar').length > 0 && $('#filter_sidebar').length > 0){
+			  $('#toggle_sidebar').click(function(){
+				  $('#filter_sidebar').addClass('opened');
+				  $('body').addClass('sidebar-fixed');
+			  });
+			  
+			  $('.close-sidebar').click(function(){
+				  $('#filter_sidebar').removeClass('opened');
+				  $('body').removeClass('sidebar-fixed');
+			  });
+		  }
+	  }
+	  
+	  $(document).ready(function(e) {
+		  initSidebarToggle();
+      });
+    }
+  },
   page_template_template_c3x_fingerspin:{
 	init: function() {
 		function initExpandable(){

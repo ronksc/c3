@@ -81,10 +81,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					echo '</div>';
                 ?>
     			</div>
+                <div id="toggle_sidebar">Show Sidebar</div>
         <?php endif; ?>
-        <div class="clearfix">
-            <div class="col-xs-12 col-sm-2 filter-container">
-                <div class="filter_toggle visible-xs visible-sm hidden-md hidden-lg">Filter</div>
+        <div class="clearfix archive_product_container">
+            <div id="filter_sidebar" class="col-xs-12 col-sm-2 filter-container">
+            	<div class="close-sidebar">Sidebar</div>
+                <!--<div class="filter_toggle visible-xs visible-sm hidden-md hidden-lg">Filter</div>-->
                 <div class="filter_wrapper">
                     <div class="filter_content">
                         <?php dynamic_sidebar( 'product_filter_menu' ); ?>
