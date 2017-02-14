@@ -25,12 +25,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h2><?php _e( 'Cart Totals', 'woocommerce' ); ?></h2>
+	<h3><?php _e( 'Cart Totals', 'woocommerce' ); ?></h3>
 
-	<table cellspacing="0" class="shop_table shop_table_responsive">
+	<table cellspacing="0" class="shop_table shop_table_responsive haha">
 
 		<tr class="cart-subtotal">
-			<th><?php _e( 'Subtotal', 'woocommerce' ); ?></th>
+			<td><strong><?php _e( 'Subtotal', 'woocommerce' ); ?></strong></td>
 			<td data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></td>
 		</tr>
 
@@ -89,7 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
 		<tr class="order-total">
-			<th><?php _e( 'Total', 'woocommerce' ); ?></th>
+			<td><strong><?php _e( 'Total', 'woocommerce' ); ?></strong></td>
 			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 
@@ -100,6 +100,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="wc-proceed-to-checkout">
 		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 	</div>
+    
+    <div class="box_coupon_code">
+    	<?php if ( wc_coupons_enabled() ) { ?>
+            <div class="coupon">
+    
+                <label for="coupon_code"><?php _e( 'Coupon code:', 'woocommerce' ); ?></label> 
+                
+                <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> 
+                
+                <input type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply Coupon', 'woocommerce' ); ?>" />
+                
+                <?php do_action( 'woocommerce_cart_coupon' ); ?>
+            </div>
+        <?php } ?>
+    </div>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
 
