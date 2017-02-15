@@ -4,9 +4,9 @@ Donate link: https://cedcommerce.com
 Tags: woocommerce, woocommerce extension, woo order, re-order, order again, re-order plugin, woocommerce order again reorder, one click order reorder, one click re-order plugin, woocommerce re-order, place same order again.
 Requires at least: 3.8
 WC requires at least: 2.3
-Tested up to: 4.7
-WC tested up to: 2.6.11
-Stable tag: 1.0.7
+Tested up to: 4.7.2
+WC tested up to: 2.6.13
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,8 +27,10 @@ on **My Account** page next to each orders as well as on order detail page.
 * **Orders may be place from order's listing( My Account) page or order's detail page as well**.
 * **Empty cart** after adding the items of an order to cart.
 * **Place Same Order** named button added to place the same order by managing the products and direct redirect to checkout.
+* **Now the plugin contains basket feature, to add bulk of products into basket and then add them in just one click. **
+* **User can save their basket items and can order them anytime. **
 * Exclude products when placing the same order again.
-* Manage quantity of products when placing the same order again.
+* manage quantity of products when placing the same order again.
 * Saves user's precious time by adding multiple products of an order at once.
 * Easy customization.
 * Easy to use and install.
@@ -67,15 +69,21 @@ or not.
 
 == Screenshots ==
 
-1. MyAccount Page
-2. Order Detail Page
-3. Cart page 
-4. Notification on cart when item is added
-5. Notification on cart when item is added
-6. Exclude item from popup 
-
+1. Admin settings
+2. Basket in shop page
+3. Exclude products from your basket popup
+4. Reorder butttons
+5. Exclude products from specific order popup
+6. Reorder buttons at order detail page 
 
 == Changelog ==
+
+= 1.0.9 =
+* Bug fixes of popup.
+
+= 1.0.8 =
+* Added basket feature.
+* Controls over the **Place Same Order** button.
 
 = 1.0.7 =
 * Added Place same order feature.
@@ -103,26 +111,9 @@ or not.
 
 == Upgrade Notice ==
 
-= 1.0.7 =
-* Added Place same order feature.
+= 1.0.9 =
+* Bug fixes of popup.
 
-= 1.0.6 =
-* Fixed an error in main file.
-
-= 1.0.5 =
-* Fixed Language issue.
-
-= 1.0.4 =
-* Fixed issues of returning to cart page without adding the order's items to cart
-
-= 1.0.3 =
-* Fixed issues related to admin notices
-
-= 1.0.2 =
-* Bit changes in codes
-
-= 1.0.1 =
-* Fixed issues related to feed.
-
-= 1.0.0 =
-* First Release.
+= 1.0.8 =
+* Added basket feature.
+* Controls over the **Place Same Order** button.

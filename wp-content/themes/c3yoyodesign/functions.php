@@ -29,6 +29,7 @@ function register_my_menus() {
     array(
       'function_menu' => __( 'Function Menu' ),
 	  'product_filter_menu' => __( 'Product Filter' ),
+	  'header_mini_cart' => __( 'Header Mini Cart' ),
 	  'footer_navigation' => __( 'Footer Navigation' )
     )
   );
@@ -48,6 +49,15 @@ register_sidebar( array(
 	'name' => 'Product Filter',
 	'id' => 'product_filter_menu',
 	'before_widget' => '<div id="product-filter-%1$s" class="widget %2$s">',
+	'after_widget' => '</div>',
+	'before_title' => '<h3 class="widgetTitle">',
+	'after_title' => '</h3>'
+) );
+
+register_sidebar( array(
+	'name' => 'Header Mini Cart',
+	'id' => 'header_mini_cart',
+	'before_widget' => '<div class="widget %2$s">',
 	'after_widget' => '</div>',
 	'before_title' => '<h3 class="widgetTitle">',
 	'after_title' => '</h3>'
@@ -135,3 +145,15 @@ function patricks_currency_symbol( $currency_symbol, $currency ) {
     return $currency_symbol;
 }
 add_filter('woocommerce_currency_symbol', 'patricks_currency_symbol', 30, 2);
+
+function my_hide_shipping_when_free_is_available( $rates ) {
+	$free = array();
+	foreach ( $rates as $rate_id => $rate ) {
+		if ( 'free_shipping' === $rate->method_id ) {
+			$free[ $rate_id ] = $rate;
+			break;
+		}
+	}
+	return ! empty( $free ) ? $free : $rates;
+}
+add_filter( 'woocommerce_package_rates', 'my_hide_shipping_when_free_is_available', 100 );

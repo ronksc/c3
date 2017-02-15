@@ -175,6 +175,27 @@ var Roots = {
       });
     }
   },
+  woocommerce_account: {
+	init: function(){
+		function initAccountSidebarToggle(){
+		  if($('#account_toggle').length > 0 && $('#account_sidebar').length > 0){
+			  $('#account_toggle').click(function(){
+				  $('#account_sidebar').addClass('opened');
+				  $('body').addClass('sidebar-fixed');
+			  });
+			  
+			  $('.close-sidebar').click(function(){
+				  $('#account_sidebar').removeClass('opened');
+				  $('body').removeClass('sidebar-fixed');
+			  });
+		  }
+		}	
+		
+		$(document).ready(function(e) {
+			initAccountSidebarToggle();
+		});
+	}
+  },
   page_template_template_c3x_fingerspin:{
 	init: function() {
 		function initExpandable(){

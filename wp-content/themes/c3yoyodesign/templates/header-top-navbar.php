@@ -9,9 +9,9 @@
       </button>
       <a href="javascript:;" class="menu-label hidden-xs hidden-sm hidden-md hidden-lg" data-toggle="collapse" data-target=".navbar-collapse">menu</a>
       <a class="navbar-brand" href="<?php echo home_url(); ?>/"><img class="img-responsive" src="<?=get_stylesheet_directory_uri()?>/assets/img/logo.png"></a>
-      <a class="mobile_cart" href="#">
+      <a class="mobile_cart" href="<?=wc_get_cart_url()?>">
       	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-      	<span>0</span>
+      	<span><?=WC()->cart->get_cart_contents_count()?></span>
       </a>
     </div>
     <div class="function-header">
@@ -31,8 +31,11 @@
                 <a href="#"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a>
                 <a href="#" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
             </div>
-            <div class="mini-cart">
-                <a href="#" style=""><i class="fa fa-shopping-cart" aria-hidden="true"></i>(0)</a>
+            <div class="mini-cart" id="mini_cart">
+                <a href="<?=wc_get_cart_url()?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>(<?=WC()->cart->get_cart_contents_count()?>)</a>
+                <div id="header_cart">
+                	<?php dynamic_sidebar( 'header_mini_cart' ); ?>
+                </div>
             </div>
     	</div>
     </div>

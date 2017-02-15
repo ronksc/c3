@@ -186,6 +186,7 @@ class NewsletterSubscription extends NewsletterModule {
     }
 
     function hook_wp_head() {
+        
     }
 
     function hook_wp_footer() {
@@ -1490,7 +1491,7 @@ class NewsletterSubscription extends NewsletterModule {
         $options = get_option('newsletter_profile');
 
         $buffer .= '<div class="tnp-profile">';
-        $buffer .= '<form action="' . esc_attr(home_url('/') . '?na=ps') . '" method="post">';
+        $buffer .= '<form action="' . esc_attr(home_url('/') . '?na=ps') . '" method="post" onsubmit="return newsletter_check(this)">';
         // TODO: use nk
         $buffer .= '<input type="hidden" name="nk" value="' . esc_attr($user->id . '-' . $user->token) . '">';
         $buffer .= '<table cellspacing="0" cellpadding="3" border="0">';
@@ -1576,7 +1577,7 @@ class NewsletterSubscription extends NewsletterModule {
         $options = get_option('newsletter_profile');
 
         $buffer .= '<div class="tnp tnp-profile">';
-        $buffer .= '<form action="' . esc_attr(home_url('/') . '?na=ps') . '" method="post">';
+        $buffer .= '<form action="' . esc_attr(home_url('/') . '?na=ps') . '" method="post" onsubmit="return newsletter_check(this)">';
         $buffer .= '<input type="hidden" name="nk" value="' . esc_attr($user->id . '-' . $user->token) . '">';
 
         $buffer .= '<div class="tnp-field tnp-field-email">';
@@ -1588,14 +1589,14 @@ class NewsletterSubscription extends NewsletterModule {
         if ($options['name_status'] >= 1) {
             $buffer .= '<div class="tnp-field tnp-field-firstname">';
             $buffer .= '<label>' . esc_html($options['name']) . '</label>';
-            $buffer .= '<input class="tnp-firstname" type="text" name="nn" value="' . esc_attr($user->name) . '">';
+            $buffer .= '<input class="tnp-firstname" type="text" name="nn" value="' . esc_attr($user->name) . '"' . ($options['name_rules'] == 1 ? ' required' : '') . '>';
             $buffer .= "</div>\n";
         }
 
         if ($options['surname_status'] >= 1) {
             $buffer .= '<div class="tnp-field tnp-field-lastname">';
             $buffer .= '<label>' . esc_html($options['surname']) . '</label>';
-            $buffer .= '<input class="tnp-lastname" type="text" name="ns" value="' . esc_attr($user->surname) . '">';
+            $buffer .= '<input class="tnp-lastname" type="text" name="ns" value="' . esc_attr($user->surname) . '"' . ($options['surname_rules'] == 1 ? ' required' : '') . '>';
             $buffer .= "</div>\n";
         }
 
@@ -1622,11 +1623,13 @@ class NewsletterSubscription extends NewsletterModule {
             $field = 'profile_' . $i;
 
             if ($options['profile_' . $i . '_type'] == 'text') {
-                $buffer .= '<input class="tnp-profile tnp-profile-' . $i . '" type="text" name="np' . $i . '" value="' . esc_attr($user->$field) . '">';
+                $buffer .= '<input class="tnp-profile tnp-profile-' . $i . '" type="text" name="np' . $i . '" value="' . esc_attr($user->$field) . '"' .
+                        ($options['profile_' . $i . '_rules'] == 1 ? ' required' : '') . '>';
             }
 
             if ($options['profile_' . $i . '_type'] == 'select') {
-                $buffer .= '<select class="tnp-profile tnp-profile-' . $i . '" name="np' . $i . '">';
+                $buffer .= '<select class="tnp-profile tnp-profile-' . $i . '" name="np' . $i . '"' . 
+                        ($options['profile_' . $i . '_rules'] == 1 ? ' required' : '') . '>';
                 $opts = explode(',', $options['profile_' . $i . '_options']);
                 for ($j = 0; $j < count($opts); $j++) {
                     $opts[$j] = trim($opts[$j]);

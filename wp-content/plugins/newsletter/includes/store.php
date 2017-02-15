@@ -107,6 +107,11 @@ class NewsletterStore {
         if (is_object($data)) {
             $data = (array) $data;
         }
+        
+        // Remove transient fields
+        foreach (array_keys($data) as $key) {
+            if (substr($key, 0, 1) == '_') unset($data[$key]);
+        }
 
         if (isset($data['id'])) {
             $id = $data['id'];

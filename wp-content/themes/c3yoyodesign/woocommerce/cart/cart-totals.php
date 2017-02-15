@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<h3><?php _e( 'Cart Totals', 'woocommerce' ); ?></h3>
 
-	<table cellspacing="0" class="shop_table shop_table_responsive haha">
+	<table cellspacing="0" class="shop_table shop_table_responsive">
 
 		<tr class="cart-subtotal">
 			<td><strong><?php _e( 'Subtotal', 'woocommerce' ); ?></strong></td>

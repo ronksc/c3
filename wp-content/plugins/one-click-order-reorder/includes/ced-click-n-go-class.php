@@ -16,6 +16,7 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 		public function __construct() {
 			global $woocommerce;
 			register_deactivation_hook(__FILE__, array ( $this, CNG_PREFIX.'_admin_notices' ) );
+			add_action( 'admin_enqueue_scripts', array ( $this, CNG_PREFIX.'_admin_enqueue' ) );
 			add_action( 'wp_enqueue_scripts', array ( $this, CNG_PREFIX.'_enqueue' ) );
 		
 			//Adding filter to add a button on my-account page
@@ -48,15 +49,24 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 			if ( ! $order->has_status( 'completed' ) ) {
 				?>
 				<p>
-					<a class="button ced_my_account_reorder" href="javascript:void(0);" data-id="<?php echo $order->id;?>">
+					<a class="button ced_my_account_reorder" href="javascript:void(0);" data-order_id="<?php echo $order->id;?>">
 						<?php _e( 'Re-Order', 'one-click-order-reorder' );?>
 					</a>
 				</p>
-				<p>
-					<a class="button ced_my_account_place_same_order" href="javascript:void(0);" data-order_id="<?php echo $order->id;?>">
-						<?php _e('Place Same Order','one-click-order-reorder');?>
-						</a>
-				</p>
+				<?php 
+
+				$settings = get_option( 'ced_ocor_general_settings', false );
+				if ( !empty( $settings ) ) {
+					if ( $settings[ 'same_order_btn' ] == '1' ) {?>
+						<p>
+							<a class="button ced_my_account_place_same_order" href="javascript:void(0);" data-order_id="<?php echo $order->id;?>">
+								<?php _e('Place Same Order','one-click-order-reorder');?>
+							</a>
+						</p>
+					<?php 
+					}
+				}
+				?>
 			<?php
 			}
 		}
@@ -68,21 +78,33 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 		 * @author CedCommerce
 		 */
 		function ced_cng_enqueue() {
-			if ( ! is_account_page() ) {
-				return false;
-			}
+			global $woocommerce, $wp_scripts;
 
-			global $woocommerce;
+			wp_enqueue_script( 'jquery-ui-draggable' );
+			wp_enqueue_script( 'jquery-ui-core' );
 			$ajax_nonce = wp_create_nonce( "ced-cng-re-order-seurity-string" );
 			wp_enqueue_style( CNG_PREFIX . '-style', CEDCOMMERCE_CNG_ORDER_URL . 'assets/css/style.min.css', '', CNG_VERSION, 'all' );
 			wp_enqueue_script ( 
 				CNG_PREFIX . '_cart', 
 				CEDCOMMERCE_CNG_ORDER_URL . 'assets/js/ced_cng_cart.min.js', 
-				array ( 'jquery' ), 
+				array ( 'jquery', 'jquery-ui-draggable' ), 
 				CNG_VERSION,
 				true
 			);
 			
+			$atbBtnText = __( 'Add to basket', CNG_TXTDOMAIN );
+			$rfbBtnText = __( 'Remove from basket', CNG_TXTDOMAIN );
+			$settings = get_option( 'ced_ocor_general_settings', false );
+			if ( ! empty( $settings ) ) {
+				if ( array_key_exists( 'atbBtnText', $settings ) and ! empty( $settings[ 'atbBtnText' ] ) ) {
+					$atbBtnText = $settings[ 'atbBtnText' ];
+				}
+
+				if ( array_key_exists( 'rfbBtnText', $settings ) and ! empty( $settings[ 'rfbBtnText' ] ) ) {
+					$rfbBtnText = $settings[ 'rfbBtnText' ];
+				}
+			}
+
 			// Localize the script with new data
 			$myaccount_page_id = get_option ( 'woocommerce_myaccount_page_id' );
 			if ( $myaccount_page_id ) {
@@ -93,23 +115,74 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 			$ajax_nonce = wp_create_nonce( "ced-cng-ajax-seurity-nonce" );
 			$translation_array = array (
 				'ajaxurl' 				=> admin_url ( 'admin-ajax.php' ),
-				'cart_url' 				=> $woocommerce->cart->get_cart_url (),
+				'plugi_dir_url' 		=> CEDCOMMERCE_CNG_ORDER_URL,
+				'cart_url' 				=> $woocommerce->cart->get_cart_url(),
 				'account_url'			=> $myaccount_page_url,
 				'checkouturl'			=> $checkout_url,
 				'ajax_nonce'			=> $ajax_nonce,
 				'product_not_exist' 	=> __( 'All products of this order is no longer exist in our store.', 'one-click-order-reorder' ),
 				'exclude_products_head' => __( 'Exclude products from this order', 'one-click-order-reorder' ),
+				'exc_basket_item_head' 	=> __( 'Exclude products from your basket', 'one-click-order-reorder' ),
 				'exclude' 				=> __( 'Exclude', 'one-click-order-reorder' ),
+				'image' 				=> __( 'Image', 'one-click-order-reorder' ),
 				'out_of_stock_desc' 	=> __( 'This product is out of stock, so it would be excluded from order.', 'one-click-order-reorder' ),
 				'exclude_desc' 			=> __( 'Click on this checkbox to exclude this product from reordering.', 'one-click-order-reorder' ),
 				'product_name' 			=> __( 'Product name', 'one-click-order-reorder' ),
 				'stock' 				=> __( 'Stock', 'one-click-order-reorder' ),
 				'quantity' 				=> __( 'Quantity', 'one-click-order-reorder' ),
-				'submit' 				=> __( 'Submit', 'one-click-order-reorder' ),
+				'submit' 				=> __( 'Checkout', 'one-click-order-reorder' ),
+				'atc' 					=> __( 'Add to cart', 'one-click-order-reorder' ),
 				'close' 				=> __( 'Close', 'one-click-order-reorder' ),
+				'no_items' 				=> __( 'No items found.', 'one-click-order-reorder' ),
+				'atbBtnText'			=> $atbBtnText,
+				'rfbBtnText'			=> $rfbBtnText
 			);
 			wp_localize_script ( CNG_PREFIX . '_cart', 'global_var', $translation_array );
 			wp_enqueue_script ( CNG_PREFIX . '_cart' );
+		}
+
+		/**
+		 * Enqueues the scripts files
+		 * 
+		 * @access public
+		 * @author CedCommerce
+		 */
+		function ced_cng_admin_enqueue() {
+			if ( ! is_admin() ) {
+				return false;
+			}
+
+			$current_screen = get_current_screen();
+			if ( empty( $current_screen ) ) {
+				return ;
+			}
+
+			if ( $current_screen->id != 'woocommerce_page_wc-ocor-settings' ) {
+				return;
+			}
+			
+
+			wp_enqueue_style( 'ced-ocor-select2-css', plugins_url( 'woocommerce/assets/css/select2.css' ) );
+			wp_enqueue_script( 'ced-ocor-select2', plugins_url( 'woocommerce/assets/js/select2/select2.min.js' ), array( 'jquery' ), CNG_VERSION, true );
+			wp_enqueue_style( CNG_PREFIX . '_admin', CEDCOMMERCE_CNG_ORDER_URL . 'assets/css/cng-admin.min.css', '', CNG_VERSION, 'all' );
+			wp_enqueue_script ( 
+				CNG_PREFIX . '_admin', 
+				CEDCOMMERCE_CNG_ORDER_URL . 'assets/js/ced_cng_admin.min.js', 
+				array ( 'jquery' ), 
+				CNG_VERSION,
+				true
+			);
+			
+			
+			$ajax_nonce 		= wp_create_nonce( "ced-cng-ajax-seurity-nonce" );
+			$translation_array 	= array (
+				'ajaxurl' 		=> admin_url( 'admin-ajax.php' ),
+				'nonce_check'	=> $ajax_nonce
+			);
+
+			wp_localize_script ( CNG_PREFIX . '_admin', 'globals', $translation_array );
+			wp_enqueue_script ( CNG_PREFIX . '_admin' );
+			add_thickbox();
 		}
 		
 		/**
@@ -127,11 +200,16 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 				'name' => apply_filters ( 'cng_change_button_text', $button_text ) 
 			);
 			
-			$btn_text = __ ( 'Place same order', 'one-click-order-reorder' );
-			$actions[ 'ced_my_account_place_same_order' ] = array (
-				'url' => $order->id,
-				'name' => apply_filters ( 'cng_change_button_text', $btn_text )
-			);
+			$settings = get_option( 'ced_ocor_general_settings', false );
+			if ( !empty( $settings ) ) {
+				if ( $settings[ 'same_order_btn' ] == '1' ) {
+					$btn_text = __ ( 'Place same order', 'one-click-order-reorder' );
+					$actions[ 'ced_my_account_place_same_order' ] = array (
+						'url' => $order->id,
+						'name' => apply_filters ( 'cng_change_button_text', $btn_text )
+					);
+				}
+			}
 			
 			return $actions;
 		}
@@ -159,12 +237,13 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 				} else if ( $items->post->post_status != 'publish' ) {
 					$order_items[ $product_id ][ 'availability' ] = 'not_availale';
 				} else {
-					$order_items[ $product_id ][ 'availability' ] = 'availale';
+					$order_items[ $product_id ][ 'availability' ] = 'available';
 				}
 
-				$order_items[ $product_id ][ 'title' ] = get_the_title( $product_id );
-				$order_items[ $product_id ][ 'permalink' ] = get_the_permalink( $product_id );
-				$order_items[ $product_id ][ 'qty' ] = ( int ) $product_info[ 'qty' ];
+				$order_items[ $product_id ][ 'title' ] 		= get_the_title( $product_id );
+				$order_items[ $product_id ][ 'permalink' ] 	= get_the_permalink( $product_id );
+				$order_items[ $product_id ][ 'qty' ] 		= ( int ) $product_info[ 'qty' ];
+				$order_items[ $product_id ][ 'image' ] 		= $items->get_image();
 				if ( ! $items->is_in_stock () ) {
 					$order_items[ $product_id ][ 'stock' ] = 'out_of_stock';
 				} else {
@@ -230,7 +309,7 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 				}
 			
 				// Checks availability of products
-				$array = wc_get_product ( $product_id );
+				$array = wc_get_product( $product_id );
 			
 				// Add to cart order products
 				$add_to_cart = WC ()->cart->add_to_cart ( $product_id, $qty, $variation_id, $all_variations, $cart_product_data );
@@ -318,6 +397,6 @@ if( ! class_exists( 'Ced_Click_n_Go' ) ) {
 			}
 		}
 	}
-	new Ced_Click_n_Go();
+	$_GLOBALS[ 'ced_click_n_go' ] = new Ced_Click_n_Go();
 }
 ?>

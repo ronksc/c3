@@ -23,6 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! empty( $breadcrumb ) ) {
 	//echo '<div class="container">';
+	
+	$delimiter = '<i class="fa fa-angle-right" aria-hidden="true"></i>';
+	
 	echo $wrap_before;
 
 	foreach ( $breadcrumb as $key => $crumb ) {

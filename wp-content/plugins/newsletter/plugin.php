@@ -4,7 +4,7 @@
   Plugin Name: Newsletter
   Plugin URI: http://www.thenewsletterplugin.com/plugins/newsletter
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="http://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
-  Version: 4.7.8
+  Version: 4.8.0
   Author: Stefano Lissa & The Newsletter Team
   Author URI: http://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -14,7 +14,7 @@
  */
 
 // Used as dummy parameter on css and js links
-define('NEWSLETTER_VERSION', '4.7.8');
+define('NEWSLETTER_VERSION', '4.8.0');
 
 global $wpdb, $newsletter;
 
@@ -969,7 +969,7 @@ class Newsletter extends NewsletterModule {
             list ($id, $token) = @explode('-', $_COOKIE['newsletter'], 2);
         }
 
-        if (is_numeric($id) && !empty($token)) {
+        if (!empty($id) && !empty($token)) {
             return $wpdb->get_row($wpdb->prepare("select * from " . NEWSLETTER_USERS_TABLE . " where id=%d and token=%s limit 1", $id, $token));
         }
 
@@ -1221,12 +1221,18 @@ class Newsletter extends NewsletterModule {
         return $user;
     }
 
+    /** Save an email and provide serialization, if needed, of $email['options']. */
     function save_email($email, $return_format = OBJECT) {
+        if (is_object($email)) {
+            $email = (array) $email;
+        }
+        
         if (isset($email['subject'])) {
             if (mb_strlen($email['subject'], 'UTF-8') > 250) {
                 $email['subject'] = mb_substr($email['subject'], 0, 250, 'UTF-8');
             }
         }
+        if (isset($email['options']) && is_array($email['options'])) $email['options'] = serialize($email['options']); 
         return $this->store->save(NEWSLETTER_EMAILS_TABLE, $email, $return_format);
     }
 
@@ -1376,14 +1382,14 @@ class Newsletter extends NewsletterModule {
      */
     function getTnpExtensions() {
 
-        $url = "http://www.thenewsletterplugin.com/wp-content/extensions.json";
-        if (!empty($this->options['contract_key'])) {
-            $url = "http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/extensions.php?k=" . $this->options['contract_key'];
-        }
-
         $extensions_json = get_transient('tnp_extensions_json');
 
         if (false === $extensions_json) {
+            $url = "http://www.thenewsletterplugin.com/wp-content/extensions.json";
+            if (!empty($this->options['contract_key'])) {
+                $url = "http://www.thenewsletterplugin.com/wp-content/plugins/file-commerce-pro/extensions.php?k=" . $this->options['contract_key'];
+            }
+
             $extensions_response = wp_remote_get($url);
             $extensions_json = wp_remote_retrieve_body($extensions_response);
             if (!empty($extensions_json)) {
@@ -1527,103 +1533,4 @@ function tnpc_preview_callback() {
 function tnpc_css_callback() {
     include NEWSLETTER_DIR . '/emails/tnp-composer/css/newsletter.css';
     wp_die(); // this is required to terminate immediately and return a proper response
-}
-
-if (is_admin()) {
-add_action('plugins_loaded', 'newsletter_plugin_loaded');
-}
-
-function newsletter_plugin_loaded() {
-
-    // Check the TGM version?
-//    if (class_exists('TGM_Plugin_Activation') && TGM_Plugin_Activation::TGMPA_VERSION != '2.6.1') {
-//        // Something
-//    }
-    
-// TGM PLUGIN ACTIVATION
-// see http://tgmpluginactivation.com/configuration/ for detailed documentation.
-    require_once dirname(__FILE__) . '/includes/class-tgm-plugin-activation.php';
-
-    add_action('tgmpa_register', 'newsletter_register_required_plugins');
-
-// Register the available extensions
-    function newsletter_register_required_plugins() {
-
-        global $wpdb;
-
-        $extensions = Newsletter::instance()->getTnpExtensions();
-        $plugins = array();
-
-        if (is_array($extensions)) {
-            foreach ($extensions AS $e) {
-                $plugins[] = array(
-                    'name' => $e->title,
-                    'slug' => $e->slug, // The plugin slug (typically the folder name).
-                    'source' => $e->download_url . '&k=' . Newsletter::instance()->options['contract_key'], // The plugin source.
-                    'required' => false, // If false, the plugin is only 'recommended' instead of required.
-                    'external_url' => $e->url, // If set, overrides default API URL and points to an external URL.
-                );
-            }
-        }
-
-        $show_estensions_notices = false;
-        //$user_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where status='C'");
-//        $sent_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_EMAILS_TABLE . " where status='sent'");
-//        if ($sent_count > 0) {
-//            $show_estensions_notices = true;
-//        }
-
-        $config = array(
-            'id' => 'newsletter', // Unique ID for hashing notices for multiple instances of TGMPA.
-            'default_path' => '', // Default absolute path to bundled plugins.
-            'menu' => 'tgmpa-install-plugins', // Menu slug.
-            'parent_slug' => 'plugins.php', // Parent menu slug.
-            'capability' => 'manage_options', // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-            'has_notices' => $show_estensions_notices, // Show admin notices or not.
-            'dismissable' => true, // If false, a user cannot dismiss the nag message.
-            'dismiss_msg' => '', // If 'dismissable' is false, this message will be output at top of nag.
-            'is_automatic' => true, // Automatically activate plugins after installation or not.
-            'message' => '', // Message to output right before the plugins table.
-            'strings' => array(
-                'page_title' => __('Newsletter Extensions and Integrations', 'newsletter'),
-                'notice_can_install_required' => _n_noop(
-                        /* translators: 1: plugin name(s). */
-                        'Newsletter requires the following plugin: %1$s.', 'Newsletter requires the following plugins: %1$s.', 'newsletter'
-                ),
-                'notice_can_install_recommended' => _n_noop(
-                        /* translators: 1: plugin name(s). */
-                        'This theme recommends the following plugin: %1$s.', 'Newsletter recommends the following plugins: %1$s.', 'newsletter'
-                ),
-                'notice_ask_to_update' => _n_noop(
-                        /* translators: 1: plugin name(s). */
-                        'The following plugin needs to be updated to its latest version to ensure maximum compatibility with Newsletter: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with Newsletter: %1$s.', 'newsletter'
-                ),
-                'notice_can_activate_recommended' => _n_noop(
-                        /* translators: 1: plugin name(s). */
-                        'The following recommended extension is currently inactive: %1$s.', 'The following recommended extensions are currently inactive: %1$s.', 'newsletter'
-                ),
-                'install_link' => _n_noop(
-                        'Begin installing extension', 'Begin installing extensions', 'newsletter'
-                ),
-                'update_link' => _n_noop(
-                        'Begin updating extension', 'Begin updating extensions', 'newsletter'
-                ),
-                'activate_link' => _n_noop(
-                        'Begin activating extension', 'Begin activating extensions', 'newsletter'
-                ),
-                'plugin_activated' => __('Extension activated successfully.', 'newsletter'),
-                'activated_successfully' => __('The following extension was activated successfully:', 'newsletter'),
-                /* translators: 1: plugin name. */
-                'plugin_already_active' => __('No action taken. Extension %1$s was already active.', 'newsletter'),
-                /* translators: 1: plugin name. */
-                'plugin_needs_higher_version' => __('Extension not activated. A higher version of %s is needed for Newsletter. Please update the extension.', 'newsletter'),
-                /* translators: 1: dashboard link. */
-                'complete' => __('All extensions installed and activated successfully. %1$s', 'newsletter'),
-                'notice_cannot_install_activate' => __('There are one or more required or recommended extensions to install, update or activate.', 'newsletter'),
-            ),
-        );
-
-        tgmpa($plugins, $config);
-    }
-
 }

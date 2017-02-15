@@ -6,9 +6,9 @@
  * Author: CedCommerce
  * Author URI: http://cedcommerce.com
  * Text Domain: one-click-order-reorder
- * Version: 1.0.7
+ * Version: 1.0.9
  * Requires at least: 3.8
- * Tested up to: 4.7
+ * Tested up to: 4.7.2
  * 
  * Click n Go is a plugin, supports in woocommerce Version 2.4.7 and above.
  * This extension is used to place the previous order again while order status is completed or not.
@@ -20,9 +20,10 @@ if (! defined ( 'ABSPATH' )) {
 }
 
 define ( 'CNG_PREFIX', 'ced_cng' );
+define ( 'CNG_VERSION', '1.0.8' );
+define ( 'CNG_TXTDOMAIN', 'one-click-order-reorder' );
 define ( 'CEDCOMMERCE_CNG_ORDER', plugin_dir_path ( __FILE__ ) );
 define ( 'CEDCOMMERCE_CNG_ORDER_URL', plugin_dir_url ( __FILE__ ) );
-define ( 'CNG_VERSION', '1.0.7' );
 
 $activated = true;
 if (function_exists ( 'is_multisite' ) && is_multisite ()) {
@@ -40,6 +41,7 @@ if (function_exists ( 'is_multisite' ) && is_multisite ()) {
  */
 if ($activated) {
 	include_once CEDCOMMERCE_CNG_ORDER . 'includes/ced-click-n-go-class.php';
+	include_once CEDCOMMERCE_CNG_ORDER . 'includes/class-basket-order.php';
 	
 	if (! function_exists ( 'ced_cng_custom_plugin_row_meta' )) {
 		/**
@@ -77,7 +79,7 @@ if ($activated) {
 	 */
 	function ced_cng_load_text_domain() {
 		$domain = "one-click-order-reorder";
-		$locale = apply_filters ( 'plugin_locale', get_locale (), $domain );
+		$locale = apply_filters ( 'plugin_locale', get_locale(), $domain );
 		load_textdomain ( $domain, CEDCOMMERCE_CNG_ORDER . 'languages/' . $domain . '-' . $locale . '.mo' );
 		$var = load_plugin_textdomain ( 'one-click-order-reorder', false, plugin_basename ( dirname ( __FILE__ ) ) . '../languages' );
 	}
@@ -87,7 +89,7 @@ if ($activated) {
 	function ced_cng_plugin_error_notice() {
 		?>
 		<div class="error notice is-dismissible">
-			<p><?php _e( 'WooCommerce is not activated. Please install WooCommerce first, to use the One click order reorder plugin !!!', 'one-click-order-reorder' ); ?></p>
+			<p><?php _e( 'WooCommerce is not activated. Please install WooCommerce first, to use the One Click Order Re-Order plugin !!!', 'one-click-order-reorder' ); ?></p>
 		</div>
 	<?php
 	}

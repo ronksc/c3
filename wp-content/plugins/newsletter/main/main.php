@@ -245,9 +245,9 @@ if (!empty($return_path)) {
                         </tr>
 
                         <tr>
-                            <td>
+                            <th>
                                 Log level
-                            </td>
+                            </th>
                             <td>
                                 <?php $controls->log_level('log_level'); ?>
                             </td>
@@ -284,11 +284,11 @@ if (!empty($return_path)) {
                             </td>
                         </tr>
                         <tr valign="top">
-                            <th>Send emails directly</th>
+                            <th>Send email directly</th>
                             <td>
                                 <?php $controls->yesno('phpmailer'); ?>
                                 <p class="description">
-                                    Instead of using WordPress emails are sent directly by Newsletter. 
+                                    Instead of using WordPress email are sent directly by Newsletter. 
                                     This enable the textual part of newsletters and the content encoding setting. 
                                     Keep at "No" if you're using
                                     ans SMTP plugin like Postman. 

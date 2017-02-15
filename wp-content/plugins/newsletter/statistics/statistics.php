@@ -34,11 +34,20 @@ class NewsletterStatistics extends NewsletterModule {
         // Newsletter Link Tracking
         if (isset($_GET['nltr'])) {
 
-            list($email_id, $user_id, $url, $anchor, $signature) = explode(';', base64_decode($_GET['nltr']), 5);
+            // Patch for links with ;
+            $parts = explode(';', base64_decode($_GET['nltr']));
+            $email_id = (int) array_shift($parts);
+            $user_id = (int) array_shift($parts);
+            $signature = array_pop($parts);
+            $anchor = array_pop($parts); // No more used
+            // The remaining elements are the url splitted when it contains
+            $url = esc_url_raw(implode(';', $parts));
+            
+            //list($email_id, $user_id, $url, $anchor, $signature) = explode(';', base64_decode($_GET['nltr']), 5);
 
-            $url = esc_url_raw($url);
-            $user_id = (int) $user_id;
-            $email_id = (int) $email_id;
+            //$url = esc_url_raw($url);
+            //$user_id = (int) $user_id;
+            //$email_id = (int) $email_id;
 
             if (empty($user_id) || empty($url)) {
                 header("HTTP/1.0 404 Not Found");
@@ -89,7 +98,7 @@ class NewsletterStatistics extends NewsletterModule {
 
             $wpdb->query($wpdb->prepare("update " . NEWSLETTER_SENT_TABLE . " set open=2, ip=%s where email_id=%d and user_id=%d limit 1", $ip, $email_id, $user_id));
 
-            header('Location: ' . $url);
+            header('Location: ' . apply_filters('newsletter_redirect_url', $url, $email, $user));
             die();
         }
 
