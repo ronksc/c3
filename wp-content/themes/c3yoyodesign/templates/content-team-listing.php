@@ -10,9 +10,9 @@
 	$team_categories = get_categories( $team_cat_args );
 	
 	//print_r($team_categories);
-	
-	
 ?>
+
+<?php get_template_part('templates/page', 'header'); ?>
 <div class="container team_container">
 	<?php
     foreach ($team_categories as $team_category){
